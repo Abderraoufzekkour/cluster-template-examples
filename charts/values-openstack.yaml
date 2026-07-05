@@ -1,0 +1,36 @@
+cluster:
+  name: my-cluster
+  labels: {}
+  annotations: {}
+
+cloudCredentialSecretName: "cattle-global-data:cc-28lns"
+
+cloudprovider: "openstack"
+
+kubernetesVersion: "v1.32.13+rke2r1"
+
+localClusterAuthEndpoint:
+  enabled: false
+
+nodepools:
+  - name: pool1
+    controlplane: true
+    etcd: true
+    worker: true
+    quantity: 2
+    paused: false
+    displayName: pool1
+    authUrl: "https://management31.icosnetcloud.com:5000/v3"
+    domainName: "Default"
+    flavorName: "m1.medium"
+    floatingipPool: "public1"
+    imageName: "Ubuntu-2204"
+    netName: "test-network-02"
+    region: "RegionOne"
+    secGroups: "test-secgroup-02"
+    sshUser: "ubuntu"
+    sshPort: "22"
+    tenantName: "Azimuth-project"
+    username: "nidhal"
+    ipVersion: "4"
+    activeTimeout: "200"
