@@ -1,0 +1,21 @@
+{{- if eq .Values.cloudprovider "openstack" }}
+apiVersion: rke-machine-config.cattle.io/v1
+kind: OpenstackConfig
+metadata:
+  name: {{ .Values.cluster.name }}-openstack-config
+  namespace: fleet-default
+authUrl: {{ .Values.openstackConfig.authUrl | quote }}
+domainName: {{ .Values.openstackConfig.domainName | quote }}
+flavorName: {{ .Values.openstackConfig.flavorName | quote }}
+floatingipPool: {{ .Values.openstackConfig.floatingipPool | quote }}
+imageName: {{ .Values.openstackConfig.imageName | quote }}
+region: {{ .Values.openstackConfig.region | quote }}
+secGroups: {{ .Values.openstackConfig.secGroups | quote }}
+sshUser: {{ .Values.openstackConfig.sshUser | quote }}
+netName: {{ .Values.openstackConfig.netName | quote }}
+tenantName: {{ .Values.openstackConfig.tenantName | quote }}
+username: {{ .Values.openstackConfig.username | quote }}
+ipVersion: {{ .Values.openstackConfig.ipVersion | quote }}
+sshPort: {{ .Values.openstackConfig.sshPort | quote }}
+activeTimeout: {{ .Values.openstackConfig.activeTimeout | quote }}
+{{- end }}
