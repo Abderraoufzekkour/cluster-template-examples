@@ -1,21 +1,24 @@
 {{- if eq .Values.cloudprovider "openstack" }}
+{{- range $index, $nodepool := .Values.nodepools }}
 apiVersion: rke-machine-config.cattle.io/v1
 kind: OpenstackConfig
 metadata:
-  name: {{ .Values.cluster.name }}-openstack-config
+  name: {{ $nodepool.name }}
   namespace: fleet-default
-authUrl: {{ .Values.openstackConfig.authUrl | quote }}
-domainName: {{ .Values.openstackConfig.domainName | quote }}
-flavorName: {{ .Values.openstackConfig.flavorName | quote }}
-floatingipPool: {{ .Values.openstackConfig.floatingipPool | quote }}
-imageName: {{ .Values.openstackConfig.imageName | quote }}
-region: {{ .Values.openstackConfig.region | quote }}
-secGroups: {{ .Values.openstackConfig.secGroups | quote }}
-sshUser: {{ .Values.openstackConfig.sshUser | quote }}
-netName: {{ .Values.openstackConfig.netName | quote }}
-tenantName: {{ .Values.openstackConfig.tenantName | quote }}
-username: {{ .Values.openstackConfig.username | quote }}
-ipVersion: {{ .Values.openstackConfig.ipVersion | quote }}
-sshPort: {{ .Values.openstackConfig.sshPort | quote }}
-activeTimeout: {{ .Values.openstackConfig.activeTimeout | quote }}
+authUrl: {{ $nodepool.authUrl | quote }}
+domainName: {{ $nodepool.domainName | quote }}
+flavorName: {{ $nodepool.flavorName | quote }}
+floatingipPool: {{ $nodepool.floatingipPool | quote }}
+imageName: {{ $nodepool.imageName | quote }}
+netName: {{ $nodepool.netName | quote }}
+region: {{ $nodepool.region | quote }}
+secGroups: {{ $nodepool.secGroups | quote }}
+sshUser: {{ $nodepool.sshUser | quote }}
+sshPort: {{ $nodepool.sshPort | quote }}
+tenantName: {{ $nodepool.tenantName | quote }}
+username: {{ $nodepool.username | quote }}
+ipVersion: {{ $nodepool.ipVersion | quote }}
+activeTimeout: {{ $nodepool.activeTimeout | quote }}
+---
+{{- end }}
 {{- end }}
